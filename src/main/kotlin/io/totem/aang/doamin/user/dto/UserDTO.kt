@@ -12,7 +12,7 @@ data class JoinDto(
 fun JoinDto.toModel(): User {
     return User(
         this.email,
-        this.password
+        this.password,
     )
 }
 

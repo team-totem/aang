@@ -2,6 +2,7 @@ package io.totem.aang.persistent.user
 
 import io.totem.aang.doamin.user.model.User
 import io.totem.aang.doamin.user.model.UserRepository
+import io.totem.aang.doamin.user.model.UserStatus
 import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Transactional
 
@@ -12,6 +13,7 @@ class UserRepositoryAdapter(
 
     @Transactional
     override fun save(model: User): User {
+        require(UserStatus.NONE != model.status)
 
         val entity: UserEntity = toEntity(model)
 
@@ -26,6 +28,6 @@ class UserRepositoryAdapter(
     }
 
     private fun toEntity(model: User): UserEntity {
-        return UserEntity(model.email, model.password)
+        return UserEntity(model.email, model.password, model.status)
     }
 }

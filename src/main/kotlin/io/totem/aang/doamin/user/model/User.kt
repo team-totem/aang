@@ -2,16 +2,23 @@ package io.totem.aang.doamin.user.model
 
 data class User(
     val email: String,
-    val password: String
+    val password: String,
+    var status: UserStatus = UserStatus.NONE
 )
 
-fun User.verify(repository: UserRepository) {
-    require(repository.existsByEmail(this.email)) {
-        "동일한 이메일이 있습니다"
-    }
+fun User.active() {
+    this.status = UserStatus.ACTIVE
 }
 
-fun User.created(repository: UserRepository) {
-    repository.save(this)
+fun User.passive() {
+    this.status = UserStatus.PASSIVE
 }
+
+enum class UserStatus {
+    ACTIVE,
+    PASSIVE,
+    NONE
+}
+
+
 
