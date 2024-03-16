@@ -29,7 +29,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    runtimeOnly("com.mysql:mysql-connector-j")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
 
@@ -38,6 +37,11 @@ dependencies {
     testImplementation("io.kotest:kotest-assertions-core-jvm:${kotestVersion}")
     testImplementation("io.kotest:kotest-property:${kotestVersion}")
     testImplementation("io.kotest.extensions:kotest-extensions-spring:${extensionsSpringVersion}")
+
+
+    // db
+    // runtimeOnly("com.mysql:mysql-connector-j")
+    runtimeOnly("com.h2database:h2")
 }
 
 tasks.withType<KotlinCompile> {
