@@ -1,5 +1,9 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+// gradle 변수 추가
+val kotestVersion = "5.8.0"
+val extensionsSpringVersion = "1.1.3"
+
 plugins {
     id("org.springframework.boot") version "3.2.3"
     id("io.spring.dependency-management") version "1.1.4"
@@ -20,12 +24,20 @@ repositories {
 }
 
 dependencies {
+
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     runtimeOnly("com.mysql:mysql-connector-j")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+
+    // kotest
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:${kotestVersion}")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:${kotestVersion}")
+    testImplementation("io.kotest:kotest-property:${kotestVersion}")
+    testImplementation("io.kotest.extensions:kotest-extensions-spring:${extensionsSpringVersion}")
 }
 
 tasks.withType<KotlinCompile> {
