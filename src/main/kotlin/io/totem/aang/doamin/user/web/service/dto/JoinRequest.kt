@@ -1,6 +1,6 @@
 package io.totem.aang.doamin.user.web.service.dto
 
-import io.totem.aang.doamin.user.dto.JoinDto
+import io.totem.aang.doamin.user.service.dto.JoinDto
 
 data class JoinRequest(
     val email: String,

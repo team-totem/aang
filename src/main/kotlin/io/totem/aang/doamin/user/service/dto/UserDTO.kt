@@ -1,4 +1,4 @@
-package io.totem.aang.doamin.user.dto
+package io.totem.aang.doamin.user.service.dto
 
 import io.totem.aang.doamin.user.model.User
 
