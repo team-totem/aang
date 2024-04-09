@@ -31,6 +31,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
+    implementation("org.springframework.boot:spring-boot-starter-validation")
 
     // kotest
     testImplementation("io.kotest:kotest-runner-junit5-jvm:${kotestVersion}")

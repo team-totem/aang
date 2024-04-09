@@ -27,6 +27,7 @@ class UserJoinService(
     }
 
     private fun valid(user: User) {
+
         require(userRepository.existsByEmail(user.email)) {
             "동일한 이메일이 있습니다"
         }
