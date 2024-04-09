@@ -14,7 +14,7 @@ class UserJoinService(
 ) {
 
     @Transactional
-    fun createdNewUser(dto: JoinDto) {
+    fun createdNewUser(dto: JoinDto): User {
 
         val user = dto.toModel()
 
@@ -23,7 +23,7 @@ class UserJoinService(
         // todo : hash password
         user.active()
 
-        userRepository.save(user)
+        return userRepository.save(user)
     }
 
     private fun valid(user: User) {
