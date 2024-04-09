@@ -1,11 +1,13 @@
 package io.totem.aang.persistent.user
 
+import io.totem.aang.doamin.user.model.User
 import io.totem.aang.doamin.user.model.UserStatus
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import jakarta.persistence.PrePersist
 import jakarta.persistence.Table
 
 @Entity
@@ -22,6 +24,20 @@ class UserEntity(
     val status: UserStatus
 ) {
 
-    constructor(email: String, password: String, status: UserStatus) :
-            this(id = null, email = email, password = password, status = status)
+
+    companion object {
+
+        fun from(model: User): UserEntity {
+            return UserEntity(
+                email = model.email,
+                password = model.password,
+                status = model.status
+            )
+        }
+    }
+
+    @PrePersist
+    fun prePersist() {
+        require(UserStatus.NONE != this.status)
+    }
 }
